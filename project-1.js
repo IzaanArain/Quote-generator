@@ -31,10 +31,23 @@ const quotes=[
     }
 ]
 
+fetch("https://type.fit/api/quotes")
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(data) {
+    console.log(data);
+    btn.addEventListener('click',function(){
+        let random=Math.floor(Math.random()*data.length);
+        quote.innerText=data[random].text
+        // person.innerText=quotes[random].person
+    })
+  });
+
+// btn.addEventListener('click',function(){
+//     let random=Math.floor(Math.random()*quotes.length);
+//     quote.innerText=quotes[random].quote
+//     person.innerText=quotes[random].person
+// })
 
 
-btn.addEventListener('click',function(){
-    let random=Math.floor(Math.random()*quotes.length);
-    quote.innerText=quotes[random].quote
-    person.innerText=quotes[random].person
-})
